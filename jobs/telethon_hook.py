@@ -114,6 +114,7 @@ async def create_message(session: AsyncSession, message: Message, chat: Chat, us
         )
         session.add(db_message)
 
+
 async def check_should_respond(session: AsyncSession, message: Message, chat: Chat) -> bool:
     result = await session.execute(select(ChatConfig).where(ChatConfig.chat_id == chat.id))
     chat_config = result.scalar_one_or_none()
